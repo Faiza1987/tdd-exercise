@@ -25,5 +25,5 @@ end
 facecards = ["King", "Queen", "Jack"]
 hand = [3, 4]
 
-# puts blackjack_score(hand)
 puts blackjack_score(hand)
+puts blackjack_score(facecards)
