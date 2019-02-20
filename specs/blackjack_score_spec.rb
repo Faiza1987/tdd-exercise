@@ -26,29 +26,24 @@ describe 'Blackjac Score' do
     # Arrange
     facecards = ['King', 'Queen', 'Jack']
     # Act
-    facecards.each do |facecard|
-      score = blackjack_score([facecard, 3])
-    end
+    score = blackjack_score(facecards)
       
     # Assert
     expect(score).must_equal 30
   end
 
   it 'calculates aces as 11 where it does not go over 21' do
-    (2..10).each do |card|
-      hand = [card, 1]
+    hand = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-      expect(blackjack_score(hand)).must_equal (card + 11)
+    score = hand.map do |i|
+      i.sum
     end
+
+    expect(score).must_equal 11
   end
 
   it 'calculates aces as 1, if an 11 would cause the score to go over 21' do
-    hand = ["King", "King", 1]
 
-    expect(blackjack_score(hand)).must_equal 21
-
-    hand = [10, 4, 1]
-    expect(blackjack_score)
   end
 
   it 'raises an ArgumentError for invalid cards' do
