@@ -33,24 +33,38 @@ describe 'Blackjac Score' do
   end
 
   it 'calculates aces as 11 where it does not go over 21' do
-    hand = [2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-    score = hand.map do |i|
-      i.sum
+    hand = [10]
+    ace = 1
+    sum = 0
+    score = 0
+    hand.each do |i|
+      sum += i
+      if sum <= 21
+        ace = 11
+      end
+      sum += ace
+      score += sum
     end
 
-    expect(score).must_equal 11
+    expect(score).must_equal 21
   end
 
   it 'calculates aces as 1, if an 11 would cause the score to go over 21' do
+    hand = [10, 10, 2]
 
+
+    
   end
 
   it 'raises an ArgumentError for invalid cards' do
-
+    expect {
+      blackjack_score('Ace', 'Ace', 'Ace', 'King', 'King', 'Queen', 'Queen')
+    }.must_raise ArgumentError
   end
 
   it 'raises an ArgumentError for more than 5 cards in the hand' do
-
+expect {
+      blackjack_score('Ace', 'Ace', 'Ace', 'King', 'King', 'Queen', 'Queen')
+    }.must_raise ArgumentError
   end
 end
